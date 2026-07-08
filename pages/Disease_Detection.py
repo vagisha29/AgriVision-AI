@@ -61,6 +61,16 @@ def download_model():
         # Delete the zip file after extraction
         os.remove(MODEL_ZIP)
 
+        # --------- DEBUG ---------
+        st.write("Current directory:", os.listdir())
+
+        if os.path.exists(MODEL_FOLDER):
+            st.write("MODEL_FOLDER exists")
+            st.write("Contents:", os.listdir(MODEL_FOLDER))
+        else:
+            st.write("MODEL_FOLDER does NOT exist")
+        # -------------------------
+
 
 download_model()
 
