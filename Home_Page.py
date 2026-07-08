@@ -57,4 +57,4 @@ Detects crop diseases from uploaded leaf images using Computer Vision.
 
 st.divider()
 
-st.info("👉 Select a page from the navigation menu to get started.")
+st.info(" Select a page from the navigation menu to get started.")
