@@ -205,7 +205,7 @@ if recommend:
 
         prediction = ml_model.predict(new_data)[0]
         crop_name = le_crop.inverse_transform([prediction])[0]
-    st.success("Prediction Successful!")
+        st.success("Prediction Successful!")
 
     st.markdown("## ✅ Recommended Crop")
 
