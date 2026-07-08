@@ -23,6 +23,10 @@ st.set_page_config(
 # ==================================================
 # Load Model
 # ==================================================
+# ==================================================
+# Load Model
+# ==================================================
+
 MODEL_FOLDER = "crop_disease_model.keras"
 MODEL_ZIP = "crop_disease_model.keras.zip"
 
@@ -31,8 +35,9 @@ MODEL_URL = "https://huggingface.co/vagisha29/AgriVision/resolve/main/crop_disea
 
 def download_model():
 
+    # Model already exists
     if os.path.exists(os.path.join(MODEL_FOLDER, "config.json")):
-    return
+        return
 
     with st.spinner("Initializing AgriVision AI..."):
 
@@ -40,7 +45,8 @@ def download_model():
             MODEL_URL,
             stream=True,
             timeout=300
-)
+        )
+
         response.raise_for_status()
 
         with open(MODEL_ZIP, "wb") as file:
@@ -48,19 +54,21 @@ def download_model():
                 if chunk:
                     file.write(chunk)
 
-        os.makedirs(MODEL_FOLDER, exist_ok=True)
-
+        # Extract the model
         with zipfile.ZipFile(MODEL_ZIP, "r") as zip_ref:
-            zip_ref.extractall(MODEL_FOLDER)
+            zip_ref.extractall()
 
+        # Delete the zip file after extraction
         os.remove(MODEL_ZIP)
-        
 
 
 download_model()
+
+
 @st.cache_resource
 def load_model():
     return tf.keras.models.load_model(MODEL_FOLDER)
+
 
 model = load_model()
 
