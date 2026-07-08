@@ -187,7 +187,7 @@ if reset:
     st.rerun()
 if recommend:
 
-   with st.spinner("Predicting the most suitable crop..."):
+    with st.spinner("Predicting the most suitable crop..."):
 
         soil_number = le_soil.transform([soil])[0]
 
@@ -205,10 +205,10 @@ if recommend:
 
         prediction = ml_model.predict(new_data)[0]
         crop_name = le_crop.inverse_transform([prediction])[0]
-        st.success("Prediction Successful!")
+
+    st.success("Prediction Successful!")
 
     st.markdown("## ✅ Recommended Crop")
-
     st.markdown(
         f"""
         <div style="
