@@ -168,7 +168,7 @@ with button1:
 with button2:
     reset = st.button(
        "🔄 Reset",
-        on_click=reset_inputs
+        on_click=reset_inputs,
         use_container_width=True
     )
 def reset_inputs():
