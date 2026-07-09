@@ -78,7 +78,8 @@ download_model()
 @st.cache_resource
 def load_model():
     return tf.keras.models.load_model(MODEL_FOLDER)
-
+st.write(tf.__version__)
+st.write(tf.keras.__version__)
 
 model = load_model()
 
