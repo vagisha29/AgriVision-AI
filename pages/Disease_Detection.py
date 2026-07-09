@@ -75,8 +75,15 @@ def download_model():
 download_model()
 
 
+import os
+
+st.write("Current directory:", os.getcwd())
+st.write("Files:", os.listdir("."))
+
 @st.cache_resource
 def load_model():
+    st.write("MODEL_FOLDER =", MODEL_FOLDER)
+    st.write("Exists?", os.path.exists(MODEL_FOLDER))
     return tf.keras.models.load_model(MODEL_FOLDER)
 
 
