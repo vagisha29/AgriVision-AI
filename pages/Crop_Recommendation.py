@@ -156,16 +156,6 @@ soil = st.selectbox(
     key="soil"
 )
 st.divider()
-def reset_inputs():
-    st.session_state.temperature = 0.0
-    st.session_state.humidity = 0.0
-    st.session_state.rainfall = 0.0
-    st.session_state.ph = 0.0
-    st.session_state.nitrogen = 0.0
-    st.session_state.phosphorous = 0.0
-    st.session_state.potassium = 0.0
-    st.session_state.carbon = 0.0
-    st.session_state.soil = soil_options[0]
 
 button1, button2 = st.columns(2)
 
@@ -181,6 +171,16 @@ with button2:
         on_click=reset_inputs
         use_container_width=True
     )
+def reset_inputs():
+    st.session_state.temperature = 0.0
+    st.session_state.humidity = 0.0
+    st.session_state.rainfall = 0.0
+    st.session_state.ph = 0.0
+    st.session_state.nitrogen = 0.0
+    st.session_state.phosphorous = 0.0
+    st.session_state.potassium = 0.0
+    st.session_state.carbon = 0.0
+    st.session_state.soil = soil_options[0]
 
 
 if recommend:
