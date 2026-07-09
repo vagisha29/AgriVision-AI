@@ -27,7 +27,7 @@ st.set_page_config(
 # Load Model
 # ==================================================
 
-MODEL_FOLDER = "crop_disease_model.keras"
+MODEL_FOLDER = "saved_model"
 MODEL_ZIP = "crop_disease_model.keras.zip"
 
 MODEL_URL = "https://huggingface.co/vagisha29/AgriVision/resolve/main/crop_disease_model.keras.zip"
