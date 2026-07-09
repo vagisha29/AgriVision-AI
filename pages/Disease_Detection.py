@@ -35,6 +35,37 @@ MODEL_URL = "https://huggingface.co/vagisha29/AgriVision/resolve/main/crop_disea
 
 def download_model():
 
+    if os.path.exists(MODEL_FOLDER):
+        st.success("Model already exists.")
+        return
+
+    st.write("Downloading model...")
+
+    response = requests.get(MODEL_URL, stream=True)
+
+    st.write("Status code:", response.status_code)
+
+    response.raise_for_status()
+
+    with open(MODEL_ZIP, "wb") as f:
+        for chunk in response.iter_content(8192):
+            if chunk:
+                f.write(chunk)
+
+    st.write("Downloaded ZIP:", os.path.exists(MODEL_ZIP))
+    st.write("ZIP size:", os.path.getsize(MODEL_ZIP))
+
+    with zipfile.ZipFile(MODEL_ZIP, "r") as zip_ref:
+        st.write("Files inside ZIP:")
+        st.write(zip_ref.namelist())
+
+        zip_ref.extractall()
+
+    st.write("After extraction:")
+    st.write(os.listdir("."))
+
+    os.remove(MODEL_ZIP)
+
     # Model already exists
     if os.path.exists(os.path.join(MODEL_FOLDER, "config.json")):
         return
