@@ -167,13 +167,12 @@ with button1:
 
 with button2:
     reset = st.button(
-        "🔄 Reset",
-        use_container_width=True
+       "🔄 Reset",
+       on_click=reset_inputs,
+       use_container_width=True
     )
 
-
-if reset:
-
+def reset_inputs():
     st.session_state.temperature = 0.0
     st.session_state.humidity = 0.0
     st.session_state.rainfall = 0.0
@@ -183,8 +182,6 @@ if reset:
     st.session_state.potassium = 0.0
     st.session_state.carbon = 0.0
     st.session_state.soil = soil_options[0]
-
-    st.rerun()
 if recommend:
 
     with st.spinner("Predicting the most suitable crop..."):
