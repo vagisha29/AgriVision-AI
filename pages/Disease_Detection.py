@@ -61,15 +61,7 @@ def download_model():
             zip_ref.extractall(MODEL_FOLDER)
 
         os.remove(MODEL_ZIP)
-        # --------- DEBUG ---------
-        st.write("Current directory:", os.listdir())
-
-        if os.path.exists(MODEL_FOLDER):
-            st.write("MODEL_FOLDER exists")
-            st.write("Contents:", os.listdir(MODEL_FOLDER))
-        else:
-            st.write("MODEL_FOLDER does NOT exist")
-        # -------------------------
+        
 
 
 download_model()
@@ -78,8 +70,7 @@ download_model()
 @st.cache_resource
 def load_model():
     return tf.keras.models.load_model(MODEL_FOLDER)
-st.write(tf.__version__)
-st.write(tf.keras.__version__)
+
 
 model = load_model()
 
